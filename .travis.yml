@@ -53,6 +53,10 @@ jobs:
     - stage: platform-test
       node_js: "0.10"
       os: linux
+    - env: TARGET_X=aarch64-unknown-linux-gnu 
+      stage: platform-test
+      node_js: "9"
+      os: linux
 
 addons:
   apt:
@@ -73,11 +77,13 @@ before_install:
         export CXX="g++-4.9";
         export LINK="gcc-4.9";
         export LINKXX="g++-4.9";
+        export CC_X=aarch64-linux-gnu-gcc;
       else
         export CC="gcc-4.7";
         export CXX="g++-4.7";
         export LINK="gcc-4.7";
         export LINKXX="g++-4.7";
+        export CC_X=aarch64-linux-gnu-gcc;
       fi
     fi
   - nvm --version

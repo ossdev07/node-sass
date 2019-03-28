@@ -1,0 +1,33 @@
+---
+kind: pipeline
+name: node6-arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: test
+  image: arm64v8/node:6
+  env:
+  - SKIP_SASS_BINARY_DOWNLOAD_FOR_CI=true
+  volumes:
+  - name: vendor
+    path: /drone/src/vendor
+  commands:
+  - npm install --unsafe-perm
+  - npm test
+# ---
+# kind: pipeline
+# name: node8-arm64
+
+# platform:
+#   os: linux
+#   arch: arm64
+
+# steps:
+# - name: test
+#   image: node:8
+#   commands:
+#   - npm install
+#   - npm test
